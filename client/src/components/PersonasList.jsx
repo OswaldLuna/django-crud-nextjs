@@ -1,23 +1,23 @@
 import { useGetPersonasQuery, useEliminarPersonaMutation } from "@/api/apiSlice"
 import Tarjeta from "./Tarjeta";
 
-export default function PersonasList (){
+export default function PersonasList() {
 
-	const {data: personas , isLoading, error} = useGetPersonasQuery()
+	const { data: personas, isLoading, error } = useGetPersonasQuery()
 
-	
+
 	if (isLoading) {
-    return <div>Cargando...</div>;
-  }
+		return <div>Cargando...</div>;
+	}
 
-  if (error) {
-    return <div>Error al cargar las personas.</div>;
-  }
+	if (error) {
+		return <div>Error al cargar las personas.</div>;
+	}
 
-  return(
+	return (
 		<div className="flex flex-wrap gap-2">
-			{personas.map((persona) =>(
-				<Tarjeta persona={persona}/>
+			{personas.map((persona) => (
+				<Tarjeta persona={persona} key={persona.id} />
 			))}
 		</div>
 	)
