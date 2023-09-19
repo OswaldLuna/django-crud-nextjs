@@ -1,19 +1,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
- export const apiSlice = createApi({
+export const apiSlice = createApi({
 	reducerPath: 'api',
-	baseQuery: fetchBaseQuery({	
+	baseQuery: fetchBaseQuery({
 		baseUrl: 'http://localhost:8000/api/v1/personas/'
 	}),
-	tagTypes:['personas'],
+	tagTypes: ['personas'],
 	endpoints: (builder) => ({
 		getPersonas: builder.query({
 			query: () => '',
 			providesTags: ['personas']
 
 		}),
-		agregarPersona: builder.mutation ({
-			query:(newPerson) => ({
+		agregarPersona: builder.mutation({
+			query: (newPerson) => ({
 				url: '',
 				method: 'POST',
 				body: newPerson,
@@ -21,10 +21,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 			invalidatesTags: ['personas']
 		}),
 		actualizarPersona: builder.mutation({
-			query:(datosActualizados) => ({
-				url:`${datosActualizados.id}/`,
-				method:'PUT',
-				body:datosActualizados,
+			query: (datosActualizados) => ({
+				url: `${datosActualizados.id}/`,
+				method: 'PUT',
+				body: datosActualizados,
 			}),
 			invalidatesTags: ['personas']
 		}),
@@ -34,9 +34,9 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 				method: 'DELETE',
 			}),
 			invalidatesTags: ['personas']
-		}),		
+		}),
 	})
 })
 
-export const { useGetPersonasQuery, useAgregarPersonaMutation, 
-	useEliminarPersonaMutation, useActualizarPersonaMutation} = apiSlice
+export const { useGetPersonasQuery, useAgregarPersonaMutation,
+	useEliminarPersonaMutation, useActualizarPersonaMutation } = apiSlice
